@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:meals/models/meal.dart';
-import 'package:meals/utils/app_routes.dart';
+import '../models/meal.dart';
+import '../utils/app_routes.dart';
 
 class MealItem extends StatelessWidget {
   final Meal meal;
+
   const MealItem(this.meal, {Key? key}) : super(key: key);
 
-  void _selectedMeal(BuildContext context) {
+  void _selectMeal(BuildContext context) {
     Navigator.of(context).pushNamed(
-      AppRoutes.MEAL_DETAIL,
+      AppRoutes.mealDetail,
+      arguments: meal,
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => _selectedMeal(context),
+      onTap: () => _selectMeal(context),
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
@@ -51,8 +53,8 @@ class MealItem extends StatelessWidget {
                     child: Text(
                       meal.title,
                       style: const TextStyle(
-                        color: Colors.white,
                         fontSize: 26,
+                        color: Colors.white,
                       ),
                       softWrap: true,
                       overflow: TextOverflow.fade,
@@ -67,27 +69,29 @@ class MealItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Row(
-                    children: <Widget>[
+                    children: [
                       const Icon(Icons.schedule),
                       const SizedBox(width: 6),
                       Text('${meal.duration} min'),
                     ],
                   ),
                   Row(
-                    children: <Widget>[
+                    children: [
                       const Icon(Icons.work),
                       const SizedBox(width: 6),
                       Text(meal.complexityText),
                     ],
                   ),
-                  Row(children: <Widget>[
-                    const Icon(Icons.attach_money),
-                    const SizedBox(width: 6),
-                    Text(meal.costText),
-                  ])
+                  Row(
+                    children: [
+                      const Icon(Icons.attach_money),
+                      const SizedBox(width: 6),
+                      Text(meal.costText),
+                    ],
+                  ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

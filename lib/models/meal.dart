@@ -48,9 +48,9 @@ class Meal {
       case Complexity.medium:
         return 'Normal';
       case Complexity.difficult:
-        return 'Dificil';
+        return 'Difícil';
       default:
-        return 'Desconhecido';
+        return 'Desconhecida';
     }
   }
 
@@ -59,7 +59,7 @@ class Meal {
       case Cost.cheap:
         return 'Barato';
       case Cost.fair:
-        return 'Normal';
+        return 'Justo';
       case Cost.expensive:
         return 'Caro';
       default:
