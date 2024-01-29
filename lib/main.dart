@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'screens/categories_screen.dart';
 import 'screens/categories_meals_screen.dart';
 import 'screens/meal_detail_screen.dart';
+import 'screens/settings_screen.dart';
 import 'utils/app_routes.dart';
 import 'screens/tabs_screen.dart';
 
@@ -18,8 +18,15 @@ class MyApp extends StatelessWidget {
       title: 'Vamos Cozinhar?',
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
+          centerTitle: true,
           backgroundColor: Colors.blue,
           foregroundColor: Colors.white,
+          titleTextStyle: TextStyle(
+            fontSize: 20,
+            fontFamily: 'Raleway',
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
         ),
         colorScheme: ColorScheme.fromSwatch().copyWith(
           primary: Colors.pink,
@@ -36,9 +43,10 @@ class MyApp extends StatelessWidget {
             ),
       ),
       routes: {
-        AppRoutes.home: (ctx) => TabsScreen(),
+        AppRoutes.home: (ctx) => const TabsScreen(),
         AppRoutes.categoriesMeals: (ctx) => const CategoriesMealsScreen(),
         AppRoutes.mealDetail: (ctx) => const MealDetailScreen(),
+        AppRoutes.settings: (ctx) => const SettingsScreen(),
       },
     );
   }
